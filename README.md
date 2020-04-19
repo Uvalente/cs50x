@@ -6,7 +6,9 @@ This repo will store all the problem set solutions for Harvard CS50X course.
 
 ###### Goal
 
-The Scratch program will simulate a Flappy Bird clone, with a Dragon sprite.
+The game has a dragon sprite that can be moved along the y axis, to collect chicken legs and avoid meteors.
+Chicken legs increment your total score.
+Meteors will stop the game.
 
 ###### Specification
 
