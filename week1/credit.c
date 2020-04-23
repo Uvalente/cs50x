@@ -19,8 +19,29 @@ int main(void)
   while (card_number > 0)
   {
     int digit = card_number % 10;
-    card_number /= 10;
     numbers[pointer] = digit;
+    card_number /= 10;
     pointer++;
   }
+
+  int checksum = 0;
+  for (int i = 1; i <= length; i += 2)
+  {
+    numbers[i] *= 2;
+    if (numbers[i] < 10)
+    {
+      checksum += numbers[i];
+    }
+    else
+    {
+      checksum += numbers[i] % 10;
+      checksum += numbers[i] / 10;
+    }
+  }
+
+  for (int i = 0; i <= length; i += 2)
+  {
+    checksum += numbers[i];
+  }
+  printf("checksum: %d\n", checksum);
 }
