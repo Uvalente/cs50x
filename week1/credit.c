@@ -7,7 +7,7 @@ int main(void)
   printf("Number: ");
   scanf("%ld", &card_number);
   long counter = card_number;
-  while (counter != 0)
+  while (counter > 0)
   {
     counter /= 10;
     length++;
@@ -31,37 +31,25 @@ int main(void)
     }
     else
     {
-      int number = numbers[i];
-      number *= 2;
-      if (number < 10)
-      {
-        checksum += number;
-      }
-      else
-      {
-        checksum += number % 10;
-        checksum += number / 10;
-      }
+      int number = numbers[i] * 2;
+      checksum += (number % 10) + (number / 10);
     }
   }
 
-  if (checksum % 10 == 0 && length >= 13)
+  int first_digit = numbers[length - 1];
+  int first_two_digits = (first_digit * 10) + numbers[length - 2];
+
+  if (checksum % 10 == 0 && length >= 13 && (first_two_digits == 34 || first_two_digits == 37))
   {
-    switch (numbers[length - 1])
-    {
-    case 3:
-      numbers[length - 2] == 4 || numbers[length - 2] == 7 ? printf("AMEX\n") : printf("INVALID\n");
-      break;
-    case 4:
-      printf("VISA\n");
-      break;
-    case 5:
-      numbers[length - 2] < 6 ? printf("MASTERCARD\n") : printf("INVALID\n");
-      break;
-    default:
-      printf("INVALID\n");
-      break;
-    }
+    printf("AMEX\n");
+  }
+  else if (checksum % 10 == 0 && length >= 13 && (first_two_digits > 50 && first_two_digits < 56))
+  {
+    printf("MASTERCARD\n");
+  }
+  else if (checksum % 10 == 0 && length >= 13 && first_digit == 4)
+  {
+    printf("VISA\n");
   }
   else
   {
