@@ -3,8 +3,7 @@
 int main(void)
 {
   long card_number;
-  int pointer = 0;
-  int length = 0;
+  int index = 0, length = 0;
   printf("Number: ");
   scanf("%ld", &card_number);
   long counter = card_number;
@@ -18,31 +17,32 @@ int main(void)
 
   while (card_number > 0)
   {
-    int digit = card_number % 10;
-    numbers[pointer] = digit;
+    numbers[index] = card_number % 10;
     card_number /= 10;
-    pointer++;
+    index++;
   }
 
   int checksum = 0;
-  for (int i = 1; i < length; i += 2)
+  for (int i = 0; i < length; i++)
   {
-    int number = numbers[i];
-    number *= 2;
-    if (number < 10)
+    if (i % 2 == 0)
     {
-      checksum += number;
+      checksum += numbers[i];
     }
     else
     {
-      checksum += number % 10;
-      checksum += number / 10;
+      int number = numbers[i];
+      number *= 2;
+      if (number < 10)
+      {
+        checksum += number;
+      }
+      else
+      {
+        checksum += number % 10;
+        checksum += number / 10;
+      }
     }
-  }
-
-  for (int i = 0; i < length; i += 2)
-  {
-    checksum += numbers[i];
   }
 
   if (checksum % 10 == 0 && length >= 13)
@@ -59,8 +59,7 @@ int main(void)
       numbers[length - 2] < 6 ? printf("MASTERCARD\n") : printf("INVALID\n");
       break;
     default:
-      printf("something wrong\n");
-      printf("check against %d\n", numbers[length - 1]);
+      printf("INVALID\n");
       break;
     }
   }
