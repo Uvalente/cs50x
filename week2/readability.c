@@ -3,27 +3,51 @@
 #include <string.h>
 #include <ctype.h>
 
-int count_letter(string string);
+// refactor to struct, array or pointer
 
-int main(void) {
-    int grade = 0;
-    string text = get_string("Text: ");
+int count_letters(string string);
+int count_words(string string);
 
-    int letters = count_letter(text);
+int main(void)
+{
+  int grade = 0;
+  string text = get_string("Text: ");
 
-    printf("%d\n", letters);
+  int letters = count_letters(text);
+  int words = count_words(text);
+
+  printf("%d\n", letters);
+  printf("%d\n", words);
 }
 
-int count_letter(string string) {
-    int letters = 0;
-    int length = strlen(string);
+int count_words(string string)
+{
+  int words = 1;
+  int length = strlen(string);
 
-    for (int i = 0; i < length; i++)
+  for (int i = 0; i < length; i++)
+  {
+    if (isspace(string[i]))
     {
-        if (isalpha(string[i])) {
-            letters++;
-        }
+      words++;
     }
+  }
 
-    return letters;
+  return words;
+}
+
+int count_letters(string string)
+{
+  int letters = 0;
+  int length = strlen(string);
+
+  for (int i = 0; i < length; i++)
+  {
+    if (isalpha(string[i]))
+    {
+      letters++;
+    }
+  }
+
+  return letters;
 }
