@@ -19,3 +19,9 @@ Specification are available [here](specifications/week0.md).
 ###### Specification
 
 Specification are available [here](specifications/week1.md).
+
+## Week 2 - Arrays
+
+###### Specification
+
+Specification are available [here](specifications/week2.md).
