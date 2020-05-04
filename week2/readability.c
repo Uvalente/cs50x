@@ -2,6 +2,7 @@
 #include <cs50.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 
 // refactor to struct, array or pointer
 
@@ -11,16 +12,16 @@ int count_sentences(string string);
 
 int main(void)
 {
-  int grade = 0;
   string text = get_string("Text: ");
 
   int letters = count_letters(text);
   int words = count_words(text);
   int sentences = count_sentences(text);
 
-  printf("%d\n", letters);
-  printf("%d\n", words);
-  printf("%d\n", sentences);
+  float average_letters = (letters * 100) / (float)words;
+  float average_sentences = (sentences * 100) / (float)words;
+
+  int grade = round(0.0588 * average_letters - 0.296 * average_sentences - 15.8);
 
   if (grade < 1)
   {
@@ -32,7 +33,7 @@ int main(void)
   }
   else
   {
-    printf("Grade #\n");
+    printf("Grade %d\n", grade);
   }
 }
 
