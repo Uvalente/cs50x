@@ -12,6 +12,27 @@ int main(int argc, string argv[])
       printf("Key must contain 26 characters.\n");
       return 1;
     }
+
+    for (int i = 0; i < 26; i++)
+    {
+      if (!isalpha(argv[1][i]))
+      {
+        printf("Must contain only alphabet letters.\n");
+        return 1;
+      }
+      for (int j = 0; j < 26; j++)
+      {
+        if (i == j)
+        {
+          continue;
+        }
+        else if (argv[1][i] == argv[1][j])
+        {
+          printf("Can not contain duplicated characters.\n");
+          return 1;
+        }
+      }
+    }
   }
   else
   {
