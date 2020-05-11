@@ -25,3 +25,9 @@ Specification are available [here](specifications/week1.md).
 ###### Specification
 
 Specification are available [here](specifications/week2.md).
+
+## Week 3 - Algorithms
+
+###### Specification
+
+Specification are available [here](specifications/week3.md).
