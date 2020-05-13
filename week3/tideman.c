@@ -150,7 +150,6 @@ void add_pairs(void)
 void sort_pairs(void)
 {
   int pair_strength[pair_count];
-
   for (int i = 0; i < pair_count; i++)
   {
     pair_strength[i] = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner];
@@ -183,13 +182,31 @@ void sort_pairs(void)
   }
 }
 
+bool is_cycle(int a, int b)
+{
+  if (locked[b][a])
+  {
+    return true;
+  }
+  for (int i = 0; i < candidate_count; i++)
+  {
+    if (locked[i][a])
+    {
+      return is_cycle(i, b);
+    }
+  }
+  return false;
+}
+
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-  // ADD CYCLE CHECK
   for (int i = 0; i < pair_count; i++)
   {
-    locked[pairs[i].winner][pairs[i].loser] = true;
+    if (!is_cycle(pairs[i].winner, pairs[i].loser))
+    {
+      locked[pairs[i].winner][pairs[i].loser] = true;
+    }
   }
 }
 
