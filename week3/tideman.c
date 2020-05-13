@@ -91,6 +91,11 @@ int main(int argc, string argv[])
 
   add_pairs();
   sort_pairs();
+
+  // for (int i = 0; i < pair_count; i++)
+  // {
+  //     printf("winner: %d, loser: %d\n", pairs[i].winner, pairs[i].loser);
+  // }
   lock_pairs();
   print_winner();
   return 0;
@@ -143,13 +148,44 @@ void add_pairs(void)
       }
     }
   }
+  return;
 }
 
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-  // TODO
-  return;
+  int pair_strength[pair_count];
+
+  for (int i = 0; i < pair_count; i++)
+  {
+    pair_strength[i] = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner];
+  }
+
+  int sort_counter = -1;
+
+  while (sort_counter != 0)
+  {
+    sort_counter = 0;
+
+    for (int i = 0; i < pair_count; i++)
+    {
+      for (int j = i + 1; j < pair_count; j++)
+      {
+        if (pair_strength[i] < pair_strength[j])
+        {
+          sort_counter++;
+          pair temp_pair = pairs[i];
+          int temp_strength = pair_strength[i];
+
+          pairs[i] = pairs[j];
+          pairs[j] = temp_pair;
+
+          pair_strength[i] = pair_strength[j];
+          pair_strength[j] = temp_strength;
+        }
+      }
+    }
+  }
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
