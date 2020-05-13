@@ -91,11 +91,6 @@ int main(int argc, string argv[])
 
   add_pairs();
   sort_pairs();
-
-  // for (int i = 0; i < pair_count; i++)
-  // {
-  //     printf("winner: %d, loser: %d\n", pairs[i].winner, pairs[i].loser);
-  // }
   lock_pairs();
   print_winner();
   return 0;
@@ -201,6 +196,21 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-  // TODO
-  return;
+  int winner_counter;
+  for (int i = 0; i < candidate_count; i++)
+  {
+    winner_counter = 0;
+    for (int j = 0; j < candidate_count; j++)
+    {
+      if (locked[j][i] == false)
+      {
+        winner_counter++;
+      }
+    }
+
+    if (winner_counter == candidate_count)
+    {
+      printf("%s\n", candidates[i]);
+    }
+  }
 }
