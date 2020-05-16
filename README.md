@@ -31,3 +31,9 @@ Specification are available [here](specifications/week2.md).
 ###### Specification
 
 Specification are available [here](specifications/week3.md).
+
+## Week 4 - Memory
+
+###### Specification
+
+Specification are available [here](specifications/week4.md).
