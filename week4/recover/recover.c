@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
   int image_count = 0;
   char file_name[8];
   FILE *recovered_data = NULL;
-  //bool open?
 
   // Read data in 512 bytes chunks
   while (fread(&data_buffer, sizeof(BYTE), 512, data_file) == 512)
@@ -50,8 +49,11 @@ int main(int argc, char *argv[])
         printf("Could not create 0");
         return 3;
       }
+    }
 
-      // Write data
+    // Write data if file is open
+    if (recovered_data)
+    {
       fwrite(data_buffer, sizeof(BYTE), 512, recovered_data);
     }
   }
