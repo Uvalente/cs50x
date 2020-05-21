@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
+#include <ctype.h>
 
 #include "dictionary.h"
 
@@ -27,7 +29,16 @@ unsigned int word_count = 0;
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-    // TODO
+    unsigned int index = hash(word);
+    
+    for (node *temp = table[index]; temp != NULL; temp = temp->next)
+    {
+        if (strcasecmp(temp->word, word) == 0)
+        {
+            return true;
+        }
+    }
+
     return false;
 }
 
@@ -35,7 +46,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // Initial simple hash, return first letter value
-    return (int)word[0] % 97;
+    return tolower((int)word[0]) % 97;
 }
 
 // Loads dictionary into memory, returning true if successful else false
@@ -48,7 +59,7 @@ bool load(const char *dictionary)
     }
 
     char word[LENGTH + 1];
-    
+
     while (fscanf(dictionary_file, "%s", word) != EOF)
     {
         // Hash the word and return table index
