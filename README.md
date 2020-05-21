@@ -37,3 +37,9 @@ Specification are available [here](specifications/week3.md).
 ###### Specification
 
 Specification are available [here](specifications/week4.md).
+
+## Week 5 - Data Structures
+
+###### Specification
+
+Specification are available [here](specifications/week5.md).
