@@ -1,6 +1,7 @@
 // Implements a dictionary's functionality
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "dictionary.h"
 
@@ -35,8 +36,21 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    // TODO
-    return false;
+    FILE *dictionary_file = fopen(dictionary, "r");
+    if (dictionary_file == NULL)
+    {
+        return false;
+    }
+
+    char word[LENGTH];
+
+    while (fscanf(dictionary_file, "%s", word) != EOF)
+    {
+        // hash the word
+        // create node in correct location
+    }
+    
+    return true;
 }
 
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
