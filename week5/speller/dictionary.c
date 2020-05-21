@@ -21,6 +21,9 @@ const unsigned int N = 26;
 // Hash table
 node *table[N];
 
+// Dictionary word count
+unsigned int word_count = 0;
+
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
@@ -45,7 +48,7 @@ bool load(const char *dictionary)
     }
 
     char word[LENGTH + 1];
-
+    
     while (fscanf(dictionary_file, "%s", word) != EOF)
     {
         // Hash the word and return table index
@@ -63,6 +66,7 @@ bool load(const char *dictionary)
         // Link new node to existing one or link to NULL and link table to it
         n->next = table[index];
         table[index] = n;
+        word_count++;
     }
     
     return true;
@@ -71,13 +75,13 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return word_count;
 }
 
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
     // TODO
-    return false;
+    // Set to true to see final output, need to do
+    return true;
 }
