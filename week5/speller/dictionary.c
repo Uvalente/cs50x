@@ -46,7 +46,7 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // Initial simple hash, return first letter value
-    return tolower((int)word[0]) % 97;
+    return (unsigned int)tolower(word[0]) % 97;
 }
 
 // Loads dictionary into memory, returning true if successful else false
@@ -65,7 +65,7 @@ bool load(const char *dictionary)
         // Hash the word and return table index
         unsigned int index = hash(word);
         // Allocate memory for the node
-        node *n = malloc(sizeof(word));
+        node *n = malloc(sizeof(node));
         // change to !n
         if (n == NULL)
         {
@@ -79,6 +79,8 @@ bool load(const char *dictionary)
         table[index] = n;
         word_count++;
     }
+
+    fclose(dictionary_file);
     
     return true;
 }
@@ -92,7 +94,14 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    // TODO
-    // Set to true to see final output, need to do
+    for (int i = 0; i < N; i++)
+    {
+        while (table[i] != NULL)
+        {
+            node *temp = table[i]->next;
+            free(table[i]);
+            table[i] = temp;
+        }
+    }
     return true;
 }
