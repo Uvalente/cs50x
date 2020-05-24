@@ -25,3 +25,17 @@ Write, in a file called hello.py in ~/pset6/hello, a program that prompts a user
 - Your program should count the number of letters, words, and sentences in the text. You may assume that a letter is any lowercase character from a to z or any uppercase character from A to Z, any sequence of characters separated by spaces should count as a word, and that any occurrence of a period, exclamation point, or question mark indicates the end of a sentence.
 - Your program should print as output "Grade X" where X is the grade level computed by the Coleman-Liau formula, rounded to the nearest integer.
 - If the resulting index number is 16 or higher (equivalent to or greater than a senior undergraduate reading level), your program should output "Grade 16+" instead of giving the exact index number. If the index number is less than 1, your program should output "Before Grade 1".
+
+## DNA
+
+In a file called dna.py in ~/pset6/dna/, implement a program that identifies to whom a sequence of DNA belongs.
+
+- The program should require as its first command-line argument the name of a CSV file containing the STR counts for a list of individuals and should require as its second command-line argument the name of a text file containing the DNA sequence to identify.
+ - If your program is executed with the incorrect number of command-line arguments, your program should print an error message of your choice (with print). If the correct number of arguments are provided, you may assume that the first argument is indeed the filename of a valid CSV file, and that the second argument is the filename of a valid text file.
+- Your program should open the CSV file and read its contents into memory.
+ - You may assume that the first row of the CSV file will be the column names. The first column will be the word name and the remaining columns will be the STR sequences themselves.
+- Your program should open the DNA sequence and read its contents into memory.
+- For each of the STRs (from the first line of the CSV file), your program should compute the longest run of consecutive repeats of the STR in the DNA sequence to identify.
+- If the STR counts match exactly with any of the individuals in the CSV file, your program should print out the name of the matching individual.
+ - You may assume that the STR counts will not match more than one individual.
+ - If the STR counts do not match exactly with any of the individuals in the CSV file, your program should print "No match".
