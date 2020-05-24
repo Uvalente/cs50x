@@ -43,3 +43,9 @@ Specification are available [here](specifications/week4.md).
 ###### Specification
 
 Specification are available [here](specifications/week5.md).
+
+## Week 6 - Python
+
+###### Specification
+
+Specification are available [here](specifications/week6.md).
