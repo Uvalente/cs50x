@@ -1,6 +1,6 @@
 def main():
     height = getHeight()
-    printPyramid(height, 0)
+    printPyramid(height)
 
 
 def getHeight():
@@ -14,7 +14,7 @@ def getHeight():
             return height
 
 
-def printPyramid(height, spaces):
+def printPyramid(height, spaces = 0):
     if height == 0:
         return
     printPyramid(height - 1, spaces + 1)
