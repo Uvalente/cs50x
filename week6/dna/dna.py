@@ -15,8 +15,17 @@ def main():
             del row["name"]
             dataset[name] = row
 
+    with open(argv[2]) as file:
+        dna = file.read()
+        for name, sequence in dataset.items():
+            if all(sequence[value] == str(sequenceCount(dna, value)) for value in sequence):
+                print(name)
+                exit(0)
+        print("No match")
+        exit(0)
 
-def counting(text, word):
+
+def sequenceCount(text, word):
     max_count = 0
     word_length = len(word)
 
