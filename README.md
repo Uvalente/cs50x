@@ -49,3 +49,9 @@ Specification are available [here](specifications/week5.md).
 ###### Specification
 
 Specification are available [here](specifications/week6.md).
+
+## Week 7 - SQL
+
+###### Specification
+
+Specification are available [here](specifications/week7.md).
